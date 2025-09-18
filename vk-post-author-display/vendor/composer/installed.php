@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.26.0',
-        'version' => '1.26.0.0',
-        'reference' => 'bc6accffd00510dcc68184f0de84a5e3f19207df',
+        'pretty_version' => '1.26.1',
+        'version' => '1.26.1.0',
+        'reference' => '7dcb633de250eea7d9711f614e6cf70abc1b63c2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,18 +11,18 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.26.0',
-            'version' => '1.26.0.0',
-            'reference' => 'bc6accffd00510dcc68184f0de84a5e3f19207df',
+            'pretty_version' => '1.26.1',
+            'version' => '1.26.1.0',
+            'reference' => '7dcb633de250eea7d9711f614e6cf70abc1b63c2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'vektor-inc/font-awesome-versions' => array(
-            'pretty_version' => '0.5.0',
-            'version' => '0.5.0.0',
-            'reference' => '5cf8705fd59082b78cea65ab26f9e8bcd8bde57b',
+            'pretty_version' => '0.6.3',
+            'version' => '0.6.3.0',
+            'reference' => '2f839c995c88d9f862841547450d500565b80212',
             'type' => 'library',
             'install_path' => __DIR__ . '/../vektor-inc/font-awesome-versions',
             'aliases' => array(),
