@@ -4,10 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6
+class ComposerStaticInit84c818ef9c741b1a01375d8f625cf259
 {
     public static $prefixLengthsPsr4 = array (
-        'V' => 
+        'V' =>
         array (
             'VektorInc\\VK_Font_Awesome_Versions\\' => 35,
             'VektorInc\\VK_Admin\\' => 19,
@@ -15,11 +15,11 @@ class ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6
     );
 
     public static $prefixDirsPsr4 = array (
-        'VektorInc\\VK_Font_Awesome_Versions\\' => 
+        'VektorInc\\VK_Font_Awesome_Versions\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/font-awesome-versions/src',
         ),
-        'VektorInc\\VK_Admin\\' => 
+        'VektorInc\\VK_Admin\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-admin/src',
         ),
@@ -34,9 +34,9 @@ class ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9ec569c4e95b7331c4875c3fde3c1cb6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit84c818ef9c741b1a01375d8f625cf259::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit84c818ef9c741b1a01375d8f625cf259::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit84c818ef9c741b1a01375d8f625cf259::$classMap;
 
         }, null, ClassLoader::class);
     }
