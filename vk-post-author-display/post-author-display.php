@@ -3,7 +3,7 @@
 Plugin Name: VK Post Author Display
 Plugin URI: http://wordpress.org/extend/plugins/vk-post-author-display/
 Description: Show post author information at post bottom.
-Version: 1.27.1
+Version: 1.28.0
 Author: Vektor,Inc.
 Author URI: https://vektor-inc.co.jp/
 Text Domain: vk-post-author-display
@@ -83,7 +83,55 @@ require_once VK_PAD_DIR . 'admin/admin.php';
 require_once VK_PAD_DIR . 'admin/admin-profile.php';
 require_once VK_PAD_DIR . 'view.post-author.php';
 new Vk_Post_Author_Box();
+require_once VK_PAD_DIR . 'inc/register-meta.php';
 require_once VK_PAD_DIR . 'hide_controller.php';
+
+/**
+ * Enqueue block editor assets for the native sidebar panel.
+ * ブロックエディタ用ネイティブサイドバーパネルのアセットを読み込む。
+ *
+ * 投稿タイプのあるブロックエディター画面（投稿・固定ページ等）でのみ実行する。
+ * Only runs on block editor screens that have a post type.
+ * ウィジェット編集画面（widgets.php）では wp-editor スクリプトをエンキューすると
+ * PHP notice が発生するため、post_type が空の場合は早期リターンする。
+ * Skips widget editor screens to prevent the PHP notice.
+ *
+ * @return void
+ */
+function pad_enqueue_block_editor_assets() {
+	// ウィジェット編集画面（wp-edit-widgets / wp-customize-widgets）では実行しない。
+	// Skip on widget editor screens (wp-edit-widgets / wp-customize-widgets).
+	$screen = get_current_screen();
+	if ( ! $screen || ! $screen->is_block_editor || empty( $screen->post_type ) ) {
+		return;
+	}
+
+	$asset_path = VK_PAD_DIR . 'build/index.asset.php';
+	if ( ! file_exists( $asset_path ) ) {
+		return;
+	}
+
+	$asset_file = include $asset_path;
+
+	wp_enqueue_script(
+		'pad-editor-panel',
+		VK_PAD_URL . 'build/index.js',
+		$asset_file['dependencies'],
+		$asset_file['version'],
+		true
+	);
+
+	wp_localize_script(
+		'pad-editor-panel',
+		'padEditor',
+		array(
+			'postTypes' => array_values( pad_display_post_types() ),
+		)
+	);
+
+	wp_set_script_translations( 'pad-editor-panel', 'vk-post-author-display' );
+}
+add_action( 'enqueue_block_editor_assets', 'pad_enqueue_block_editor_assets' );
 
 // Add a link to this plugin's settings page
 function pad_set_plugin_meta( $links ) {
